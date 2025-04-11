@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/registar_desbloqueio.ts": {
-      "runtime": "nodejs@20"
+      "runtime": "nodejs20.x"
     }
   }
 }
