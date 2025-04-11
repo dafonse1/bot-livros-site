@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/registar_desbloqueio.ts": {
+      "runtime": "nodejs20"
+    }
+  }
+}
