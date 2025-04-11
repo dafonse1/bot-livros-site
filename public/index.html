@@ -47,6 +47,29 @@
       document.getElementById('codigo').style.display = 'block';
     }
   </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.10.1/sha256.min.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const user_id = params.get('user_id');
+const livro = params.get('livro');
 
+function gerarCodigo() {
+    const raw = user_id + livro.toLowerCase().trim();
+    return sha256(raw).substring(0,6).toUpperCase();
+}
+
+function mostrarCodigo() {
+    const codigo = gerarCodigo();
+    document.getElementById("codigo").innerHTML = "🔑 Código Secreto: <b>" + codigo + "</b>";
+}
+
+// aqui assumes que o utilizador já viu publicidade, chama mostrarCodigo() após publicidade
+window.onload = function(){
+    // simula visualização de anúncio
+    setTimeout(mostrarCodigo, 5000);  // Espera 5 segundos, ou substitui por evento real do anúncio
+};
+</script>
+
+<div id="codigo">A gerar código secreto...</div>
 </body>
 </html>
