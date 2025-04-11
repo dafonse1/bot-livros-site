@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "pages/api/registar_desbloqueio.ts": {
-      "runtime": "vercel/node@20.x"
-    }
-  }
-}
