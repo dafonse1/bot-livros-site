@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desbloquear Livro</title>
+  <script src="/js/sha256.min.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2em; }
+    button { font-size: 1.5em; margin: 1em; padding: 1em 2em; }
+    #codigo { font-weight: bold; font-size: 2em; margin-top: 1em; display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>🔓 Desbloquear Livro</h1>
+  <p>Clica nas 3 portas mágicas abaixo para desbloquear o teu código secreto.</p>
+
+  <div id="botoes">
+    <button onclick="abrirAnuncio()">Porta 1</button>
+    <button onclick="abrirAnuncio()">Porta 2</button>
+    <button onclick="abrirAnuncio()">Porta 3</button>
+  </div>
+
+  <div id="codigo"></div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const user_id = urlParams.get('user_id');
+    const livro = urlParams.get('livro');
+
+    let cliques = 0;
+
+    function abrirAnuncio() {
+      window.open('https://www.google.com', '_blank'); // Substitui por link Adsterra
+      cliques++;
+      if (cliques >= 3) {
+        mostrarCodigo();
+      }
+    }
+
+    function mostrarCodigo() {
+      const raw = user_id + livro.toLowerCase().trim();
+      const hash = sha256(raw).toUpperCase().substring(0, 6);
+      document.getElementById('codigo').innerHTML =
+        `📘 O teu código é: <br><span>${hash}</span>`;
+      document.getElementById('codigo').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
