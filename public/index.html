@@ -2,38 +2,24 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>Desbloquear Livro</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.10.1/sha256.min.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        #codigo { font-size: 24px; margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Bot Livros - Bem-vindo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; text-align: center; }
+    .anuncio { margin: 20px auto; border: 1px solid #ccc; padding: 20px; width: 300px; }
+  </style>
 </head>
 <body>
-    <h1>📚 Desbloqueio do Livro</h1>
-    <div id="anuncio">Por favor, aguarde 5 segundos para obter o seu código...</div>
-    <div id="codigo"></div>
+  <h1>📚 Bem-vindo ao Bot de Livros</h1>
+  <p>Entra no Telegram e procura um livro. Quando clicares, vais ver um link para esta página:</p>
+  <p><strong>/desbloquear</strong> – onde vais receber o teu código secreto após ver a publicidade.</p>
 
-    <script>
-    const params = new URLSearchParams(window.location.search);
-    const user_id = params.get('user_id');
-    const livro = params.get('livro');
+  <div class="anuncio">
+    <!-- Exemplo de bloco de publicidade (simulado) -->
+    <h3>Publicidade</h3>
+    <iframe src="https://example.com/anuncio" width="300" height="250" style="border: none;"></iframe>
+  </div>
 
-    function gerarCodigo() {
-        const raw = user_id + livro.toLowerCase().trim();
-        return sha256(raw).substring(0,6).toUpperCase();
-    }
-
-    function mostrarCodigo() {
-        const codigo = gerarCodigo();
-        document.getElementById("anuncio").innerText = "✅ Código gerado com sucesso!";
-        document.getElementById("codigo").innerHTML = "🔑 Código Secreto: <b>" + codigo + "</b>";
-    }
-
-    window.onload = function(){
-        setTimeout(mostrarCodigo, 5000); // 5 segundos simula visualização de anúncio
-    };
-    </script>
+  <p>Desenvolvido por Dafonse ©</p>
 </body>
 </html>
